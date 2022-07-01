@@ -1,0 +1,52 @@
+import NextAuth from "next-auth"
+import CredentialProvider from "next-auth/providers/credentials"
+export default NextAuth({
+    providers: [
+        CredentialProvider({
+            name: "credentials",
+            credentials: {
+                username: { label: "Username", type: "text", placeholder: "Username" },
+                password: { label: "Password", type: "password" }
+            },
+            authorize: (credentials) => {
+                console.log(process.env.ADMINUSER , credentials.username)
+                console.log(process.env.PASSWORD , credentials.password)
+                if (credentials.username === process.env.ADMINUSER) {
+                    if (credentials.password === process.env.PASSWORD) {
+                        return {
+                            id: 2,
+                            name: "John",
+                            email: "jaiisodjasd"
+                        }
+                    }
+                }
+                else {
+                    return null
+                }
+            },
+
+        }),
+    ],
+    callbacks: {
+        jwt: ({ token, user }) => {
+            if (user) {
+                token.id = user.id
+            }
+            return token
+        },
+        session: ({ session, token }) => { 
+            if (token){
+                session.id = token.id
+            }
+            return session
+        }
+    },
+    secret: process.env.SECRET,
+    jwt: {
+        secret: "dasd",
+        encryption: true
+    },
+    pages:{
+        signIn: "http://localhost:3000/admin"
+    }
+})
