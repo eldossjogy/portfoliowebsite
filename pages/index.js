@@ -68,9 +68,9 @@ export async function getServerSideProps() {
     return Music
   }
 
-  const req = await fetch("http://localhost:3000/api/info/get")
+  const req = await fetch("https://eldossjogy.vercel.app/api/info/get")
   const data = await req.json()
-  const profileReq = await fetch("http://localhost:3000/api/profile/get")
+  const profileReq = await fetch("https://eldossjogy.vercel.app/api/profile/get")
   const profileData = await profileReq.json()
   const musicInfo = await getWordsAndDoStuff()
   return {

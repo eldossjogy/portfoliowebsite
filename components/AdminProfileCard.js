@@ -22,7 +22,7 @@ export default function AdminInfoCard(props) {
             "status": status,
             "pfp": link
         }
-        fetch("http://localhost:3000/api/profile/update", {
+        fetch("https://eldossjogy.vercel.app/api/profile/update", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(reqBody)

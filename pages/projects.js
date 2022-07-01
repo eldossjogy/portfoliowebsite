@@ -23,7 +23,7 @@ export default function ProjectList(props) {
 }
 
 export async function getServerSideProps(){
-    const req = await fetch("http://localhost:3000/api/project/get")
+    const req = await fetch("https://eldossjogy.vercel.app/api/project/get")
     const data = await req.json()
     return{
         props: {projects: data,}

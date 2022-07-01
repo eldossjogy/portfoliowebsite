@@ -47,6 +47,6 @@ export default NextAuth({
         encryption: true
     },
     pages:{
-        signIn: "http://localhost:3000/admin"
+        signIn: "https://eldossjogy.vercel.app/admin"
     }
 })

@@ -79,11 +79,11 @@ export default function Page(props) {
 }
 
 export const getServerSideProps = async () => {
-    var res = await fetch("http://localhost:3000/api/info/get")
+    var res = await fetch("https://eldossjogy.vercel.app/api/info/get")
     const homeInfo = await res.json()
-    res = await fetch("http://localhost:3000/api/project/get")
+    res = await fetch("https://eldossjogy.vercel.app/api/project/get")
     const projectInfo = await res.json()
-    res = await fetch("http://localhost:3000/api/profile/get")
+    res = await fetch("https://eldossjogy.vercel.app/api/profile/get")
     const profileInfo = await res.json()
     return {
         props: {

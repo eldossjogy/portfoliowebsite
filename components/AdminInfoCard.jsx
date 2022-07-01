@@ -21,7 +21,7 @@ export default function AdminInfoCard(props) {
             "title": infoTitle,
             "content": infoContent
         }
-        fetch("http://localhost:3000/api/info/update", {
+        fetch("https://eldossjogy.vercel.app/api/info/update", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(reqBody)
@@ -34,7 +34,7 @@ export default function AdminInfoCard(props) {
         let reqBody = {
             "id": props.id
         }
-        fetch("http://localhost:3000/api/info/remove", {
+        fetch("https://eldossjogy.vercel.app/api/info/remove", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(reqBody)

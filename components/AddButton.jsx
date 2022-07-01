@@ -54,7 +54,7 @@ export default function AddButton(props) {
                 "title": infoTitle,
                 "content": infoContent
             }
-            fetch("http://localhost:3000/api/info/add", {
+            fetch("https://eldossjogy.vercel.app/api/info/add", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reqBody)
@@ -71,7 +71,7 @@ export default function AddButton(props) {
                 "extlink" : projExtLink
             }
             console.log("create Project")
-            fetch("http://localhost:3000/api/project/add", {
+            fetch("https://eldossjogy.vercel.app/api/project/add", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reqBody)
