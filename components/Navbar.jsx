@@ -126,7 +126,7 @@ export default function PrimarySearchAppBar(props) {
                 Eldoss
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
-              <Box sx={{ display: { xs: 'none', fold: "none", phones: "none", sm: 'flex', md: 'flex' } }}>
+              <Box sx={{ display: { xs: 'none', fold: "flex", sm: 'flex', md: 'flex' } }} >
                 <Button
                   color="secondary"
                   variant={props.page === "projects" ? "contained" : "null"}
@@ -143,8 +143,11 @@ export default function PrimarySearchAppBar(props) {
                 >
                   Contact
                 </Button>
+                <div className={` ${props.page === "admin" ? style.cantSee : style.canSee}`}>
                 <MUISwitch sx={{ display: 'flex' }} checked={checked}
-                  onChange={handleChange} />
+                  onChange={handleChange} 
+                  />
+                </div>
                 <div
                   className={` ${props.page === "admin" ? style.canSee : style.cantSee}`}>
                   <Button
@@ -156,8 +159,8 @@ export default function PrimarySearchAppBar(props) {
                   </Button>
                 </div>
               </Box>
-              <Box sx={{ display: { xs: 'flex',  fold: "flex", phones: "flex", sm: 'none', md: 'none' } }}>
-                <MUISwitch sx={{ display: 'flex', my:2 }} checked={checked}
+              <Box sx={{ display: { xs: 'flex', fold: "none", sm: 'none', md: 'none' } }}>
+                <MUISwitch sx={{ display: 'flex', my: 2 }} checked={checked}
                   onChange={handleChange} />
                 <IconButton
                   size="large"
