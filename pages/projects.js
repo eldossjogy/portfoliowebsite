@@ -22,10 +22,11 @@ export default function ProjectList(props) {
     </Box>
 }
 
-export async function getServerSideProps(){
+export async function getStaticProps(){
     const req = await fetch("https://eldossjogy.vercel.app/api/project/get")
     const data = await req.json()
     return{
-        props: {projects: data,}
+        props: {projects: data},
+        revalidate: 10,
     }
 }

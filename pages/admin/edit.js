@@ -16,7 +16,6 @@ export default function Page(props) {
     const projectInfos = props.projectInfo.project
     const router = useRouter()
     const { data: session, status } = useSession()
-    console.log(session, status)
 
     useEffect(() => {
         if (status === "unauthenticated") {

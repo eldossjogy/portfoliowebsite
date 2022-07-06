@@ -6,7 +6,7 @@ import { getSession } from "next-auth/react"
  * @param {import('next').NextApiRequest} req 
  * @param {import('next').NextApiResponse} res 
  */
-export default async (req, res) => {
+export default async function addProject(req, res){
   const session = await getSession({ req })
   if (session) {
     try {

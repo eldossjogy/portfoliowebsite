@@ -16,9 +16,9 @@ function Contact(props) {
             position="top-center"
             reverseOrder={false}
         />
-        <Tooltip title={`🎧 Listening to ${props.info.track} by ${props.info.artist}`} arrow>
+        <Tooltip title={props.info.track != "loading..." ? `🎧 Listening to ${props.info.track} by ${props.info.artist}` : ""} arrow>
             <Avatar
-                alt="Remy Sharp"
+                alt="Eldoss Jogy"
                 src="https://avatars.githubusercontent.com/u/77898541?v=4"
                 sx={{ width: 120, height: 120, border: "solid 4px ", margin: "auto" }}
             />

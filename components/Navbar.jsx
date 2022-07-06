@@ -25,7 +25,15 @@ export default function PrimarySearchAppBar(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    setMounted(true)
+    let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (matched && theme === "system") {
+      setChecked(true)
+    }
+  }, [])
+
+
   if (!mounted) return null
 
   const handleChange = (event) => {
@@ -57,6 +65,14 @@ export default function PrimarySearchAppBar(props) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+
+  function changeState() {
+    let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (matched && theme === "system" || theme == "dark") {
+      return true
+    }
+    return false
+  }
   const menuId = 'primary-search-account-menu';
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -99,12 +115,12 @@ export default function PrimarySearchAppBar(props) {
         <Grid item xs={12} tablet={6} md={6} lg={6} xl={4}>
           <AppBar position="static" color="primary" className={style.navbar}>
             <Toolbar>
-             <Typography
+              <Typography
                 onClick={() => router.push("/")}
                 variant="h6"
                 noWrap
                 component="div"
-                className= "yourName"
+                className="yourName"
                 sx={{ display: { xs: 'block', sm: 'block' }, cursor: "pointer" }}
               >
                 Eldoss
@@ -115,7 +131,7 @@ export default function PrimarySearchAppBar(props) {
                   color="secondary"
                   variant={props.page === "projects" ? "contained" : "null"}
                   onClick={() => router.push("/projects")}
-                  sx={{  display: 'block' }}
+                  sx={{ display: 'block' }}
                 >
                   Projects
                 </Button>
@@ -123,25 +139,25 @@ export default function PrimarySearchAppBar(props) {
                   color="secondary"
                   variant={props.page === "contact" ? "contained" : "null"}
                   onClick={() => router.push("/contact")}
-                  sx={{  ml: 1, mr:1, display: 'block' }}
+                  sx={{ ml: 1, mr: 1, display: 'block' }}
                 >
                   Contact
                 </Button>
-                <MUISwitch sx={{  display: 'flex' }} checked={checked}
+                <MUISwitch sx={{ display: 'flex' }} checked={checked}
                   onChange={handleChange} />
                 <div
                   className={` ${props.page === "admin" ? style.canSee : style.cantSee}`}>
                   <Button
                     color="secondary"
                     variant={props.page === "admin" ? "contained" : "null"}
-                    sx={{  ml: 2, display: 'block' }}
+                    sx={{ ml: 2, display: 'block' }}
                     onClick={() => signOut({ callbackUrl: '/admin' })}>
                     LogOut
                   </Button>
                 </div>
               </Box>
               <Box sx={{ display: { xs: 'flex', fold: "none", sm: 'none', md: 'none' } }}>
-                <MUISwitch sx={{  display: 'flex' }} checked={checked}
+                <MUISwitch sx={{ display: 'flex' }} checked={checked}
                   onChange={handleChange} />
                 <IconButton
                   size="large"

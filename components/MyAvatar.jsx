@@ -3,7 +3,7 @@ import { Avatar, Tooltip } from "@mui/material";
 
 function MyAvatar(props) {
   return (
-    <Tooltip title={`🎧 Listening to ${props.info.track} by ${props.info.artist}`} arrow>
+    <Tooltip title={props.info.track != "loading..." ? `🎧 Listening to ${props.info.track} by ${props.info.artist}` : ""} arrow>
       <Avatar
         alt="Eldoss Jogy"
         src={props.img}

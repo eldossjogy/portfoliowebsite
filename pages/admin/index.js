@@ -12,7 +12,6 @@ export default function SignIn() {
   const [userName, setUserName] = useState("")
   const [userPass, setUserPass] = useState("")
   const router = useRouter()
-  const apiKey = process.env.API_KEY;
 
   async function handleSubmit(e) {
     e.preventDefault()

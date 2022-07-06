@@ -14,9 +14,8 @@ export default NextAuth({
                 if (credentials.username === process.env.ADMINUSER) {
                     if (credentials.password === process.env.PASSWORD) {
                         return {
-                            id: 2,
-                            name: "John",
-                            email: "jaiisodjasd"
+                            id: 1,
+                            name: "Admin"
                         }
                     }
                 }
@@ -43,7 +42,7 @@ export default NextAuth({
     },
     secret: process.env.SECRET,
     jwt: {
-        secret: "dasd",
+        secret: process.env.JWTSECRET,
         encryption: true
     },
     pages:{
