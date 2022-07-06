@@ -9,8 +9,6 @@ export default NextAuth({
                 password: { label: "Password", type: "password" }
             },
             authorize: (credentials) => {
-                console.log(process.env.ADMINUSER , credentials.username)
-                console.log(process.env.PASSWORD , credentials.password)
                 if (credentials.username === process.env.ADMINUSER) {
                     if (credentials.password === process.env.PASSWORD) {
                         return {

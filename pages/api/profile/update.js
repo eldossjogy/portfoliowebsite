@@ -14,7 +14,6 @@ export default async function updateProfile(req, res) {
     const info = await Profile.findByIdAndUpdate(id, { name: name, status: status, pfp: pfp })
     if (info === null) {
       const info = await Profile.create(req.body)
-      console.log(info)
     }
     res.json({ info })
   } else {

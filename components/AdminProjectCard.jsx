@@ -46,7 +46,6 @@ export default function AdminInfoCard(props) {
             "link": projectSrc,
             "extlink": projectExt
         }
-        console.log(reqBody)
         fetch("https://eldossjogy.vercel.app/api/project/update", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },

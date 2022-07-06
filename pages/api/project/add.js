@@ -11,16 +11,11 @@ export default async function addProject(req, res){
   if (session) {
     try {
         const { title, content, img, link } = req.body;
-        console.log("CONNECTING TO MONGO")
         await dbConnect()
-        console.log("CONNECTED TO MONGO")
-        console.log("Create Doc")
         const project = await Project.create(req.body)
-        console.log("Created Doc")
         res.json({ project })
     }
     catch (error) {
-        console.log(error)
         res.json(error)
     }
   } else {

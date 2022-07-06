@@ -11,6 +11,7 @@ export const darkTheme = createTheme({
     values: {
       xs: 0,
       fold: 400,
+      phones: 500,
       sm: 600,
       md: 900,
       tablet: 1050,
@@ -33,6 +34,7 @@ export const lightTheme = createTheme({
     values: {
       xs: 0,
       fold: 400,
+      phones: 500,
       sm: 600,
       md: 900,
       tablet: 1050,

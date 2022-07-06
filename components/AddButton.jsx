@@ -70,7 +70,6 @@ export default function AddButton(props) {
                 "link": projSrcLink,
                 "extlink" : projExtLink
             }
-            console.log("create Project")
             fetch("https://eldossjogy.vercel.app/api/project/add", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
@@ -108,7 +107,6 @@ export default function AddButton(props) {
                     variant="standard"
                     multiline
                     value={infoTitle}
-                    required="true"
                     onChange={(e) => setInfoTitle(e.target.value)}
                 />
                 <TextField
@@ -119,7 +117,6 @@ export default function AddButton(props) {
                     fullWidth
                     variant="standard"
                     multiline
-                    required="true"
                     value={infoContent}
                     onChange={(e) => setInfoContent(e.target.value)}
                 />

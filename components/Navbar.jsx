@@ -100,7 +100,7 @@ export default function PrimarySearchAppBar(props) {
       </MenuItem>
       <div className={` ${props.page === "admin" ? style.canSee : style.cantSee}`}>
         <MenuItem onClick={() => signOut({ callbackUrl: '/admin' })}>
-          <p>LogOut</p>
+          <p>Logout</p>
         </MenuItem>
       </div>
 
@@ -126,7 +126,7 @@ export default function PrimarySearchAppBar(props) {
                 Eldoss
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
-              <Box sx={{ display: { xs: 'none', fold: "flex", sm: 'flex', md: 'flex' } }}>
+              <Box sx={{ display: { xs: 'none', fold: "none", phones: "none", sm: 'flex', md: 'flex' } }}>
                 <Button
                   color="secondary"
                   variant={props.page === "projects" ? "contained" : "null"}
@@ -152,12 +152,12 @@ export default function PrimarySearchAppBar(props) {
                     variant={props.page === "admin" ? "contained" : "null"}
                     sx={{ ml: 2, display: 'block' }}
                     onClick={() => signOut({ callbackUrl: '/admin' })}>
-                    LogOut
+                    Logout
                   </Button>
                 </div>
               </Box>
-              <Box sx={{ display: { xs: 'flex', fold: "none", sm: 'none', md: 'none' } }}>
-                <MUISwitch sx={{ display: 'flex' }} checked={checked}
+              <Box sx={{ display: { xs: 'flex',  fold: "flex", phones: "flex", sm: 'none', md: 'none' } }}>
+                <MUISwitch sx={{ display: 'flex', my:2 }} checked={checked}
                   onChange={handleChange} />
                 <IconButton
                   size="large"

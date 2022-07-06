@@ -27,7 +27,6 @@ export default function SignIn() {
 
   const { data: session } = useSession()
 
-  console.log(session)
   if (session) {
     router.push("/admin/edit")
   }
