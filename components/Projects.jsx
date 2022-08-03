@@ -11,12 +11,12 @@ export default function Projects(props) {
         <Grid container spacing={{ xs: 2, md: 2 }}>
             {props.proj.map((project, index) => {
                 return <Fragment key={index}>
-                    <Grid item xs={0.5} sm={0.5} className="gridSpace" ></Grid>
-                    <Grid item xs={11} sm={11} md={6} tablet={4}>
+                    <Grid item xs={1} sm={0.5} className="gridSpace"></Grid>
+                    <Grid item xs={10} sm={11} md={6} tablet={4}>
                         <ProjectCard title={project.title} content={project.content} link={project.link} img={project.img} extlink={project.extlink} />
                     </Grid>
-                    <Grid item xs={0.5} sm={0.5} className="gridSpace"></Grid>
-                    </Fragment>
+                    <Grid item xs={1} sm={0.5} className="gridSpace"></Grid>
+                </Fragment>
             })}
 
         </Grid>
