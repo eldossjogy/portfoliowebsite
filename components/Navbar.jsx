@@ -22,7 +22,7 @@ export default function PrimarySearchAppBar(props) {
   const { theme, setTheme } = useTheme()
 
   const [checked, setChecked] = useState(theme === 'dark' ? true : false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  // const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   useEffect(() => {
@@ -45,35 +45,35 @@ export default function PrimarySearchAppBar(props) {
     }
   };
 
-  const isMenuOpen = Boolean(anchorEl);
+  // const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleProfileMenuOpen = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
+  // const handleMenuClose = () => {
+  //   setAnchorEl(null);
+  //   handleMobileMenuClose();
+  // };
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
 
-  function changeState() {
-    let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (matched && theme === "system" || theme == "dark") {
-      return true
-    }
-    return false
-  }
-  const menuId = 'primary-search-account-menu';
+  // function changeState() {
+  //   let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  //   if (matched && theme === "system" || theme == "dark") {
+  //     return true
+  //   }
+  //   return false
+  // }
+  // const menuId = 'primary-search-account-menu';
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
@@ -121,9 +121,8 @@ export default function PrimarySearchAppBar(props) {
                 noWrap
                 component="div"
                 className="yourName"
-                sx={{ display: { xs: 'block', sm: 'block' }, cursor: "pointer" }}
-              >
-                Eldoss
+                sx={{ display: { xs: 'block', sm: 'block' }, cursor: "pointer" }}>
+                 <a className={"links"} href="." rel="noopener noreferrer">Eldoss</a>
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
               <Box sx={{ display: { xs: 'none', fold: "flex", sm: 'flex', md: 'flex' } }} >

@@ -83,3 +83,7 @@ mark {
         display: none;
     }
 }
+
+.links {
+    all: unset
+}

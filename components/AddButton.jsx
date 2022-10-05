@@ -76,7 +76,13 @@ export default function AddButton(props) {
                 body: JSON.stringify(reqBody)
             }).then(handleErrors)
                 .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
-                .catch(err => { toast("Error " + JSON.parse(err.message).message, { type: "error", duration: 2000 }) });
+                .catch(err => { 
+                    try {
+                        toast("Error " + JSON.parse(err.message).message, { type: "error", duration: 2000 })
+                    } catch (error) {
+                        toast("Error " +  err.message, { type: "error", duration: 2000 })
+                    }
+                 });
             setProjOpen(false);
         }
         setInfoTitle("");
