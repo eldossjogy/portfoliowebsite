@@ -11,7 +11,6 @@ export default async function addProject(req, res) {
   if (session) {
     try {
       const { title, content, img, link } = req.body;
-      // if (title == null || content == null || img == null || link == null) { res.json({ message: "Missing Components" }) }
       await dbConnect()
       const project = await Project.create(req.body)
       res.json({ project })

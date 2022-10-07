@@ -46,53 +46,85 @@ export default function AddButton(props) {
         if (!res.ok) { return res.text().then(text => { throw new Error(text) }) }
         else { return res.json(); }
     }
+    
+    function InfoAPICall(infoTitle,infoContent) {
+        let reqBody = {
+            "title": infoTitle,
+            "content": infoContent
+        }
+        fetch("https://eldossjogy.vercel.app/api/info/add", {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(reqBody)
+        }).then(handleErrors)
+            .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
+            .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
+        setInfoOpen(false);
+    }
+
+    function ProjectAPICall(projTitle,projContent,projImgLink,projSrcLink,projExtLink) {
+        let reqBody = {
+            "title": projTitle,
+            "content": projContent,
+            "img": projImgLink,
+            "link": projSrcLink,
+            "extlink" : projExtLink
+        }
+        fetch("https://eldossjogy.vercel.app/api/project/add", {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(reqBody)
+        }).then(handleErrors)
+            .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
+            .catch(err => { 
+                try {
+                    toast("Error " + JSON.parse(err.message).message, { type: "error", duration: 2000 })
+                } catch (error) {
+                    toast("Error " +  err.message, { type: "error", duration: 2000 })
+                }
+             });
+        setProjOpen(false);
+    }
 
     function handleDialogSubmit(e) {
-        let reqBody = {}
         if (e.target.id === 'info') {
-            reqBody = {
-                "title": infoTitle,
-                "content": infoContent
+            if (!infoTitle && !infoContent) {
+                toast("Empty Form", { type: "error", duration: 2000 })
             }
-            fetch("https://eldossjogy.vercel.app/api/info/add", {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(reqBody)
-            }).then(handleErrors)
-                .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
-                .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
-            setInfoOpen(false);
+            else if (!infoTitle) {
+                toast("Missing Title Section", { type: "error", duration: 2000 })
+            }
+            else if (!infoContent) {
+                toast("Missing Content Section", { type: "error", duration: 2000 })
+            }
+            else {
+                InfoAPICall(infoTitle,infoContent)
+            }
         } else {
-            reqBody = {
-                "title": projTitle,
-                "content": projContent,
-                "img": projImgLink,
-                "link": projSrcLink,
-                "extlink" : projExtLink
+            if (!projTitle && !projContent && !projImgLink && !projSrcLink && !projExtLink) {
+                toast("Empty Form", { type: "error", duration: 2000 })
             }
-            fetch("https://eldossjogy.vercel.app/api/project/add", {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(reqBody)
-            }).then(handleErrors)
-                .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
-                .catch(err => { 
-                    try {
-                        toast("Error " + JSON.parse(err.message).message, { type: "error", duration: 2000 })
-                    } catch (error) {
-                        toast("Error " +  err.message, { type: "error", duration: 2000 })
-                    }
-                 });
-            setProjOpen(false);
+            else if (!projTitle) {
+                toast("Missing Title Section", { type: "error", duration: 2000 })
+            }
+            else if (!projContent) {
+                toast("Missing Content Section", { type: "error", duration: 2000 })
+            }
+            else if (!projImgLink) {
+                toast("Missing Image Section", { type: "error", duration: 2000 })
+            }
+            else {
+                ProjectAPICall(projTitle,projContent,projImgLink,projSrcLink,projExtLink)
+            }
         }
-        setInfoTitle("");
-        setInfoContent("");
-        setProjTitle("");
-        setProjContent("");
-        setProjImgLink("");
-        setProjSrcLink("");
-        setProjExtLink("");
-        router.push("/admin/edit")
+        // setInfoTitle("");
+        // setInfoContent("");
+        // setProjTitle("");
+        // setProjContent("");
+        // setProjImgLink("");
+        // setProjSrcLink("");
+        // setProjExtLink("");
+        // router.push("/admin/edit")
     }
 
     return <div sx={{ display: "inline" }}>
