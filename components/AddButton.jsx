@@ -6,11 +6,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import toast from 'react-hot-toast';
+import { addProject } from "../utils/projectRequest"
+import { addInfo } from "../utils/infoRequest"
 
 export default function AddButton(props) {
-    const router = useRouter()
+    // const router = useRouter()
     const [infoOpen, setInfoOpen] = useState(false);
     const [projOpen, setProjOpen] = useState(false);
     const [infoTitle, setInfoTitle] = useState("");
@@ -42,50 +44,6 @@ export default function AddButton(props) {
         }
     };
 
-    function handleErrors(res) {
-        if (!res.ok) { return res.text().then(text => { throw new Error(text) }) }
-        else { return res.json(); }
-    }
-    
-    function InfoAPICall(infoTitle,infoContent) {
-        let reqBody = {
-            "title": infoTitle,
-            "content": infoContent
-        }
-        fetch("https://eldossjogy.vercel.app/api/info/add", {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(reqBody)
-        }).then(handleErrors)
-            .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
-            .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
-        setInfoOpen(false);
-    }
-
-    function ProjectAPICall(projTitle,projContent,projImgLink,projSrcLink,projExtLink) {
-        let reqBody = {
-            "title": projTitle,
-            "content": projContent,
-            "img": projImgLink,
-            "link": projSrcLink,
-            "extlink" : projExtLink
-        }
-        fetch("https://eldossjogy.vercel.app/api/project/add", {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(reqBody)
-        }).then(handleErrors)
-            .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
-            .catch(err => { 
-                try {
-                    toast("Error " + JSON.parse(err.message).message, { type: "error", duration: 2000 })
-                } catch (error) {
-                    toast("Error " +  err.message, { type: "error", duration: 2000 })
-                }
-             });
-        setProjOpen(false);
-    }
-
     function handleDialogSubmit(e) {
         if (e.target.id === 'info') {
             if (!infoTitle && !infoContent) {
@@ -98,7 +56,7 @@ export default function AddButton(props) {
                 toast("Missing Content Section", { type: "error", duration: 2000 })
             }
             else {
-                InfoAPICall(infoTitle,infoContent)
+                addInfo(infoTitle, infoContent, props.setFun,setInfoOpen)
             }
         } else {
             if (!projTitle && !projContent && !projImgLink && !projSrcLink && !projExtLink) {
@@ -114,7 +72,7 @@ export default function AddButton(props) {
                 toast("Missing Image Section", { type: "error", duration: 2000 })
             }
             else {
-                ProjectAPICall(projTitle,projContent,projImgLink,projSrcLink,projExtLink)
+                addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLink, props.setFun,setProjOpen)
             }
         }
         // setInfoTitle("");
@@ -214,7 +172,7 @@ export default function AddButton(props) {
                     value={projSrcLink}
                     onChange={(e) => setProjSrcLink(e.target.value)}
                 />
-                  <TextField
+                <TextField
                     autoFocus
                     margin="dense"
                     id="name"

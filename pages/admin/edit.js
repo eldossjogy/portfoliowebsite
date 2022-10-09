@@ -37,7 +37,7 @@ export default function Page(props) {
         }
     });
 
-    useEffect( () => { console.log(profileInfo); console.log("THSI CAUSED:", profileInfo?.name);}, [profileInfo] )
+    useEffect( () => { console.log(projectInfo);}, [projectInfo] )
     console.log(profileInfo)
     console.log(profileInfo?._id)
     console.log(bioInfo)
@@ -71,20 +71,20 @@ export default function Page(props) {
                         <Profile key={profileInfo?._id} id={profileInfo?._id} name={profileInfo?.name} status={profileInfo?.status} pfp={profileInfo?.pfp} setInfo={setProfileInfo}/>
                         <Typography variant="h5">
                             Homepage Info
-                            <AddButton id="info"></AddButton>
+                            <AddButton id="info" setFun={setBioInfo}></AddButton>
                         </Typography>
                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 8, md: 6, tablet: 6, lg: 8, xl: 12 }}>
                             {bioInfo?.map((info) => {
-                                return <Grid item xs={2} sm={4} md={3} key={info._id}> <AdminInfoCard key={info._id} id={info._id} title={info.title} content={info.content} /> </Grid>
+                                return <Grid item xs={2} sm={4} md={3} key={info._id}> <AdminInfoCard key={info._id} id={info._id} title={info.title} content={info.content} setInfo={setBioInfo}/> </Grid>
                             })}
                         </Grid>
                         <Typography variant="h5" sx={{ marginTop: "5%" }}>
                             Project Info
-                            <AddButton id="project"></AddButton>
+                            <AddButton id="project" setFun={setProjectInfo}></AddButton>
                         </Typography>
                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 8, md: 6, tablet: 6, lg: 8, xl: 12 }}>
                             {projectInfo?.map((info) => {
-                                return <Grid item xs={2} sm={4} md={3} key={info._id}> <AdminProjectCard key={info._id} id={info._id} title={info.title} content={info.content} img={info.img} link={info.link} ext={info.extlink} /> </Grid>
+                                return <Grid item xs={2} sm={4} md={3} key={info._id}> <AdminProjectCard key={info._id} id={info._id} title={info.title} content={info.content} img={info.img} link={info.link} ext={info.extlink} setInfo={setProjectInfo}/> </Grid>
                             })}
                         </Grid>
                     </Grid>

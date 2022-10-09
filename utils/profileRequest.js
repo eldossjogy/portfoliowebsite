@@ -25,4 +25,4 @@ function updateInfo(id, name, status, link, setProfile) {
         .catch(err => { toast("Error occurred while trying to update", { type: "error", duration: 2000 }) });
 }
 
-export default updateInfo;
+export {updateInfo};

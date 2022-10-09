@@ -1,15 +1,23 @@
-function deleteProject() {
+import toast from 'react-hot-toast';
+function handleErrors(res) {
+    if (!res.ok) { return res.text().then(text => { throw new Error(text) }) }
+    else { return res.json(); }
+}
+
+function deleteProject(id, setProject) {
     let reqBody = {
-        "id": props.id
+        "id": id
     }
-    fetch("https://eldossjogy.vercel.app/api/project/remove", {
+    fetch("http://localhost:3000/api/project/remove", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reqBody)
     }).then(handleErrors)
-        .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
+        .then(r => {
+            toast("Success", { type: "success", duration: 2000 })
+            setProject((prevState) => { return prevState.filter(items => items._id != id) })
+        })
         .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
-    router.push('/admin/edit');
 }
 
 function updateProject() {
@@ -21,13 +29,42 @@ function updateProject() {
         "link": projectSrc,
         "extlink": projectExt
     }
-    fetch("https://eldossjogy.vercel.app/api/project/update", {
+    fetch("http://localhost:3000/api/project/update", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reqBody)
     }).then(handleErrors)
         .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
         .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
-    router.push('/admin/edit');
+    // router.push('/admin/edit');
 
 }
+
+function addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLink, setProject, setProjOpen) {
+    let reqBody = {
+        "title": projTitle,
+        "content": projContent,
+        "img": projImgLink,
+        "link": projSrcLink,
+        "extlink": projExtLink
+    }
+    fetch("http://localhost:3000/api/project/add", {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reqBody)
+    }).then(handleErrors)
+        .then(r => {
+            toast("Success", { type: "success", duration: 2000 })
+            console.log(r.project)
+            setProject(prevArray => {console.log("THIS IS THIE:",prevArray); return [...prevArray, r.project]})
+        })
+        .catch(err => {
+            try {
+                toast("Error " + JSON.parse(err.message).message, { type: "error", duration: 2000 })
+            } catch (error) {
+                toast("Error " + err.message, { type: "error", duration: 2000 })
+            }
+        });
+    setProjOpen(false);
+}
+export { addProject, updateProject, deleteProject };
