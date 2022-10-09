@@ -1,5 +1,5 @@
 import { Button, Stack, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SendIcon from '@mui/icons-material/Send';
 import toast, { Toaster } from 'react-hot-toast';
 import style from "../styles/Admin.module.css"
@@ -9,7 +9,7 @@ export default function AdminInfoCard(props) {
     const [name, setName] = useState(props.name);
     const [status, setStatus] = useState(props.status);
     const [link, setLink] = useState(props.pfp);
-
+    
     function handleErrors(res) {
         if (!res.ok) { return res.text().then(text => { throw new Error(text) }) }
         else { return res.json(); }

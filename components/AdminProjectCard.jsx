@@ -7,6 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from "next/router"
 import { useEffect } from "react";
 
+
 export default function AdminInfoCard(props) {
     const router = useRouter()
     const [projectTitle, setProjectTitle] = useState(props.title);
