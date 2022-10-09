@@ -22,7 +22,7 @@ export default function Page(props) {
     const [projectInfo, setProjectInfo] =  useState([])
     
     useEffect(() => {
-        if (fetchInfo.profile.info?.length > 0)
+        if (fetchInfo.profile.info?.length > 0 && fetchInfo.profile.info[0]?._id )
         {
             setProfileInfo(fetchInfo.profile.info[0])
         }
@@ -36,7 +36,10 @@ export default function Page(props) {
             router.push({ pathname: "/admin" })
         }
     });
+
+    useEffect( () => { console.log(profileInfo); console.log("THSI CAUSED:", profileInfo?.name);}, [profileInfo] )
     console.log(profileInfo)
+    console.log(profileInfo?._id)
     console.log(bioInfo)
     console.log(projectInfo)
 
@@ -65,7 +68,7 @@ export default function Page(props) {
                         <Typography variant="h5">
                             Profile Info
                         </Typography>
-                        <Profile key={profileInfo?._id} id={profileInfo?._id} name={profileInfo?.name} status={profileInfo?.status} pfp={profileInfo?.pfp} />
+                        <Profile key={profileInfo?._id} id={profileInfo?._id} name={profileInfo?.name} status={profileInfo?.status} pfp={profileInfo?.pfp} setInfo={setProfileInfo}/>
                         <Typography variant="h5">
                             Homepage Info
                             <AddButton id="info"></AddButton>
