@@ -11,10 +11,10 @@ import { useRouter } from 'next/router';
 
 export default function MediaCard(props) {
     return (
-        <Card className="myCard" sx={{ maxWidth: "100%", borderRadius: "10px"}}>
+        <Card className="myCard">
             <CardMedia
                 component="img"
-                height="auto"
+                height="150px"
                 image={props.img}
                 alt="project image"
             />
@@ -24,12 +24,12 @@ export default function MediaCard(props) {
                 <Typography variant="body1">{parse(props.content)}
                 </Typography>
             </CardContent>
-            <CardActions>
+            <CardActions className={"bottomCard"}>
                 <a className={"links"} href={props.link} target="_blank" rel="noopener noreferrer">
                 <Icon className={"socialMedia"} icon="akar-icons:github-fill" width="35" height="35" cursor="pointer" />
                 </a>
                 {props.extlink != "" ?  <a href={props.extlink} className={"links"} target="_blank" rel="noopener noreferrer"><Icon className={"socialMedia"} icon="fa-solid:globe" width="35" height="35" cursor="pointer" /></a> : null }
-                </CardActions>
+            </CardActions>
         </Card>
     );
 }
