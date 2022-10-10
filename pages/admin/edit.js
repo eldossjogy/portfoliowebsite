@@ -37,11 +37,11 @@ export default function Page(props) {
         }
     });
 
-    useEffect( () => { console.log(projectInfo);}, [projectInfo] )
-    console.log(profileInfo)
-    console.log(profileInfo?._id)
-    console.log(bioInfo)
-    console.log(projectInfo)
+    // useEffect( () => { console.log(projectInfo);}, [projectInfo] )
+    // console.log(profileInfo)
+    // console.log(profileInfo?._id)
+    // console.log(bioInfo)
+    // console.log(projectInfo)
 
     if (status === "loading") {
         return <p>Loading...</p>

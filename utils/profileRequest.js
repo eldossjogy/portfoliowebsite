@@ -5,7 +5,6 @@ function handleErrors(res) {
 }
 
 function updateInfo(id, name, status, link, setProfile) {
-    console.log("ID IN CALL:",id)
     let reqBody = {
         "id": id,
         "name": name,

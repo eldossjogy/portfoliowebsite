@@ -6,8 +6,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Icon } from '@iconify/react';
 import parse from 'html-react-parser'
-import { useRouter } from 'next/router';
-
 
 export default function MediaCard(props) {
     return (

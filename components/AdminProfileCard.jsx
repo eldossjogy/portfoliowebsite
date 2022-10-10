@@ -16,7 +16,6 @@ export default function AdminInfoCard(props) {
         setName(props.name)
         setStatus(props.status)
         setLink(props.pfp)
-        console.log("CHANGES",props.id)
     }, [props])
 
     return <div className={style.profile}>
@@ -47,7 +46,7 @@ export default function AdminInfoCard(props) {
         />
         <Stack direction="row" spacing={2}>
             <Button sx={{ marginLeft: "auto" }}
-                onClick={() => {updateInfo(id,name,status,link,props.setInfo)}}
+                onClick={() => {updateInfo(id,name,status,link)}}
                 variant="contained"
                 color="success"
                 endIcon={<SendIcon />}>

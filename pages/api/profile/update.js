@@ -12,7 +12,6 @@ export default async function updateProfile(req, res) {
     const { id, name, status, pfp } = req.body;
     await dbConnect()
     const info = await Profile.findByIdAndUpdate(id, { name: name, status: status, pfp: pfp },  {new: true})
-    console.log(info)
     if (info === null) {
       const info = await Profile.create(req.body)
     }

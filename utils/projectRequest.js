@@ -36,8 +36,6 @@ function updateProject(id,projectTitle,projectContent,projectImg,projectSrc,proj
     }).then(handleErrors)
         .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
         .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
-    // router.push('/admin/edit');
-
 }
 
 function addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLink, setProject, setProjOpen) {
@@ -55,8 +53,7 @@ function addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLin
     }).then(handleErrors)
         .then(r => {
             toast("Success", { type: "success", duration: 2000 })
-            console.log(r.project)
-            setProject(prevArray => {console.log("THIS IS THIE:",prevArray); return [...prevArray, r.project]})
+            setProject(prevArray => {[...prevArray, r.project]})
         })
         .catch(err => {
             try {

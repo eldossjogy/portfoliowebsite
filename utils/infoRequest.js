@@ -4,10 +4,10 @@ function handleErrors(res) {
     else { return res.json(); }
 }
 
-function updateInfo(id, infoTitle, infoContent, setInfo) {
+function updateInfo(id, infoTitle, infoContent) {
     let reqBody = {
         "id": id,
-        "title": infoTitle,
+        "title": infoTitle, 
         "content": infoContent
     }
     fetch("http://localhost:3000/api/info/update", {
@@ -17,8 +17,6 @@ function updateInfo(id, infoTitle, infoContent, setInfo) {
     }).then(handleErrors)
         .then(r => {
             toast("Success", { type: "sucess", duration: 2000 })
-            console.log(r)
-            // setInfo((prevState) => {prevState.append()})
         })
         .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
 }
