@@ -20,9 +20,9 @@ function deleteProject(id, setProject) {
         .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
 }
 
-function updateProject() {
+function updateProject(id,projectTitle,projectContent,projectImg,projectSrc,projectExt) {
     let reqBody = {
-        "id": props.id,
+        "id":  id,
         "title": projectTitle,
         "content": projectContent,
         "img": projectImg,
