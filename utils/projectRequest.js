@@ -38,7 +38,7 @@ function updateProject(id,projectTitle,projectContent,projectImg,projectSrc,proj
         .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
 }
 
-function addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLink, setProject, setProjOpen) {
+function addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLink, setProject, setProjOpen,reset) {
     let reqBody = {
         "title": projTitle,
         "content": projContent,
@@ -52,6 +52,7 @@ function addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLin
         body: JSON.stringify(reqBody)
     }).then(handleErrors)
         .then(r => {
+            reset()
             toast("Success", { type: "success", duration: 2000 })
             setProject(prevArray => {[...prevArray, r.project]})
         })

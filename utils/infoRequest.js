@@ -37,7 +37,7 @@ function deleteInfo(id, setInfo) {
         .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
 }
 
-function addInfo(infoTitle, infoContent, setBio, setInfoOpen) {
+function addInfo(infoTitle, infoContent, setBio, setInfoOpen,reset) {
     let reqBody = {
         "title": infoTitle,
         "content": infoContent
@@ -48,6 +48,7 @@ function addInfo(infoTitle, infoContent, setBio, setInfoOpen) {
         body: JSON.stringify(reqBody)
     }).then(handleErrors)
         .then(r => {
+            reset()
             toast("Success", { type: "success", duration: 2000 })
             setBio(prevArray => [...prevArray, r.info])
         })

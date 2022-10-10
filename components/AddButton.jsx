@@ -6,13 +6,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-// import { useRouter } from "next/router";
 import toast from 'react-hot-toast';
 import { addProject } from "../utils/projectRequest"
 import { addInfo } from "../utils/infoRequest"
 
 export default function AddButton(props) {
-    // const router = useRouter()
     const [infoOpen, setInfoOpen] = useState(false);
     const [projOpen, setProjOpen] = useState(false);
     const [infoTitle, setInfoTitle] = useState("");
@@ -26,6 +24,16 @@ export default function AddButton(props) {
     function openDialog() {
         if (props.id === 'info') { setInfoOpen(true); }
         else { setProjOpen(true); }
+    }
+
+    function reset(){
+        setInfoTitle("");
+        setInfoContent("");
+        setProjTitle("");
+        setProjContent("");
+        setProjImgLink("");
+        setProjSrcLink("");
+        setProjExtLink("");
     }
 
     function handleDialogClose(event) {
@@ -56,7 +64,7 @@ export default function AddButton(props) {
                 toast("Missing Content Section", { type: "error", duration: 2000 })
             }
             else {
-                addInfo(infoTitle, infoContent, props.setFun,setInfoOpen)
+                addInfo(infoTitle, infoContent, props.setFun,setInfoOpen,reset)
             }
         } else {
             if (!projTitle && !projContent && !projImgLink && !projSrcLink && !projExtLink) {
@@ -72,18 +80,11 @@ export default function AddButton(props) {
                 toast("Missing Image Section", { type: "error", duration: 2000 })
             }
             else {
-                addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLink, props.setFun,setProjOpen)
+                addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLink, props.setFun,setProjOpen,reset)
             }
         }
-        // setInfoTitle("");
-        // setInfoContent("");
-        // setProjTitle("");
-        // setProjContent("");
-        // setProjImgLink("");
-        // setProjSrcLink("");
-        // setProjExtLink("");
-        // router.push("/admin/edit")
-    }
+    }        
+   
 
     return <div sx={{ display: "inline" }}>
         <Button onClick={openDialog} className="btn-add" variant="contained" color="secondary" startIcon={<AddIcon sx={{ marginLeft: "25%" }} />}>
