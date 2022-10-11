@@ -2,10 +2,8 @@ import React from "react";
 import { Avatar, Tooltip, Typography } from "@mui/material";
 import { Icon } from '@iconify/react';
 import toast, { Toaster } from 'react-hot-toast';
-import { useRouter } from "next/router";
 
 function Contact(props) {
-    const router = useRouter();
     function discordID() {
         navigator.clipboard.writeText("Beta#9931")
         toast.success("Copied to clipboard!")

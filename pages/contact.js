@@ -30,7 +30,7 @@ export default function Contact() {
       <Grid className="container" item xs={12} md={4}>
         <Contacts info={Music}></Contacts>
       </Grid>
-      <Grid className="disapear" item xs={false} md={4}>
+      <Grid item xs={false} md={4}>
       </Grid>
     </Grid>
 

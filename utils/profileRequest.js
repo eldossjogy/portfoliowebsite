@@ -18,7 +18,6 @@ function updateInfo(id, name, status, link, setProfile) {
     }).then(handleErrors)
         .then(r => {
             toast("Successfully updated profile", { type: "success", duration: 2000 })
-            console.log("OUTPUT:",r.info)
             setProfile(r.info)
         })
         .catch(err => { toast("Error occurred while trying to update", { type: "error", duration: 2000 }) });

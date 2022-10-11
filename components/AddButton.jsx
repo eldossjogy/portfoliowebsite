@@ -190,6 +190,5 @@ export default function AddButton(props) {
                 <Button onClick={handleDialogSubmit} id="proj">Add</Button>
             </DialogActions>
         </Dialog>
-        {/* <Toaster /> */}
     </div>
 }

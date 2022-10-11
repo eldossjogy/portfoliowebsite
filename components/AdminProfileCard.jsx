@@ -5,7 +5,6 @@ import style from "../styles/Admin.module.css"
 import {updateInfo} from "../utils/profileRequest"
 
 export default function AdminInfoCard(props) {
- 
     const [id, setID] = useState();
     const [name, setName] = useState();
     const [status, setStatus] = useState();

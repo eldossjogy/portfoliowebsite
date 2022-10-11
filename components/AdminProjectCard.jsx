@@ -66,6 +66,5 @@ export default function AdminInfoCard(props) {
                 Update
             </Button>
         </Stack>
-        {/* <Toaster /> */}
     </div >
 }

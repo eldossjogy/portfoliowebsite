@@ -15,7 +15,7 @@ export default function ProjectList(props) {
                 <Projects proj={props.projects.project} />
                 <Footer></Footer>
             </Grid>
-            <Grid className="disapear" item xs={false} md={3}>
+            <Grid item xs={false} md={3}>
             </Grid>
         </Grid>
 
