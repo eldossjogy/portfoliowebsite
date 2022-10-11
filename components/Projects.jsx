@@ -9,8 +9,7 @@ export default function Projects(props) {
             Projects
         </Typography>
         <Grid container spacing={{ xs: 2, md: 2 }}>
-            {props.proj.reverse().map((project, index) => {
-                console.log(project)
+            {props.proj.map((project, index) => {
                 return <Fragment key={index}>
                     <Grid item xs={1} sm={0.5} className="gridSpace"></Grid>
                     <Grid item xs={10} sm={11} md={6} tablet={4}>
