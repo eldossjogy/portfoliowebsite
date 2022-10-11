@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 const AppContext = createContext();
 
 function retrieveProjects(setProject) {
-    fetch("http://localhost:3000/api/project/get")
+    fetch("https://eldossjogy.vercel.app/api/project/get")
         .then(r => {
             return r.json()
         })
@@ -13,7 +13,7 @@ function retrieveProjects(setProject) {
 }
 
 function retrieveInfo(setInfo) {
-    fetch("http://localhost:3000/api/info/get")
+    fetch("https://eldossjogy.vercel.app/api/info/get")
         .then(r => {
             return r.json()
         })
@@ -23,7 +23,7 @@ function retrieveInfo(setInfo) {
 }
 
 function retrieveProfile(setProfile) {
-    fetch("http://localhost:3000/api/profile/get")
+    fetch("https://eldossjogy.vercel.app/api/profile/get")
         .then(r => {
             return r.json()
         })

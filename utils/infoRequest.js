@@ -10,7 +10,7 @@ function updateInfo(id, infoTitle, infoContent) {
         "title": infoTitle, 
         "content": infoContent
     }
-    fetch("http://localhost:3000/api/info/update", {
+    fetch("https://eldossjogy.vercel.app/api/info/update", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reqBody)
@@ -25,7 +25,7 @@ function deleteInfo(id, setInfo) {
     let reqBody = {
         "id": id
     }
-    fetch("http://localhost:3000/api/info/remove", {
+    fetch("https://eldossjogy.vercel.app/api/info/remove", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reqBody)
@@ -42,7 +42,7 @@ function addInfo(infoTitle, infoContent, setBio, setInfoOpen,reset) {
         "title": infoTitle,
         "content": infoContent
     }
-    fetch("http://localhost:3000/api/info/add", {
+    fetch("https://eldossjogy.vercel.app/api/info/add", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reqBody)

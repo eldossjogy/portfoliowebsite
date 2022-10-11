@@ -8,7 +8,7 @@ function deleteProject(id, setProject) {
     let reqBody = {
         "id": id
     }
-    fetch("http://localhost:3000/api/project/remove", {
+    fetch("https://eldossjogy.vercel.app/api/project/remove", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reqBody)
@@ -29,7 +29,7 @@ function updateProject(id,projectTitle,projectContent,projectImg,projectSrc,proj
         "link": projectSrc,
         "extlink": projectExt
     }
-    fetch("http://localhost:3000/api/project/update", {
+    fetch("https://eldossjogy.vercel.app/api/project/update", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reqBody)
@@ -46,7 +46,7 @@ function addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLin
         "link": projSrcLink,
         "extlink": projExtLink
     }
-    fetch("http://localhost:3000/api/project/add", {
+    fetch("https://eldossjogy.vercel.app/api/project/add", {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reqBody)
