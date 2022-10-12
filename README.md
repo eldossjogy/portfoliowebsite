@@ -9,35 +9,31 @@
 
 Write about 1-2 paragraphs describing the purpose of your project.
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+## Prerequisites & Installing
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them.
-
-```
-Give examples
+Create a file in the root directory with the name `.env.local` containing the filled information of the `.env.example` file.
+ 
+Installing packages:
+```bash
+npm install
 ```
 
-### Installing
+### Build
 
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
+Running the development server:
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+Open [http://localhost:3000/](http://localhost:3000/) with your browser to see the result.
+
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/hello). This endpoint can be edited in `pages/api/hello.js`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
  
 ## 🚀 Deployment <a name = "deployment"></a>
@@ -45,9 +41,10 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [ReactJs](https://vuejs.org/) - Web Framework
-- [NextJs](https://expressjs.com/) - Server Framework
+- [ReactJs](https://reactjs.org/) - Web Framework
+- [NextJs](https://nextjs.org/) - Server Framework
+- [NextAuth](https://next-auth.js.org/) - Authentication Framework
 - [MongoDB](https://www.mongodb.com/) - Database
-- [Vercel](https://nodejs.org/en/) - Deployment Platform
+- [Vercel](https://vercel.com/) - Deployment Platform
 
  
