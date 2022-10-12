@@ -16,7 +16,7 @@ function updateInfo(id, infoTitle, infoContent) {
         body: JSON.stringify(reqBody)
     }).then(handleErrors)
         .then(r => {
-            toast("Success", { type: "sucess", duration: 2000 })
+            toast("Success", { type: "success", duration: 2000 })
         })
         .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
 }

@@ -34,7 +34,7 @@ function updateProject(id,projectTitle,projectContent,projectImg,projectSrc,proj
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(reqBody)
     }).then(handleErrors)
-        .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
+        .then(Response => toast("Success", { type: "success", duration: 2000 }))
         .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
 }
 
