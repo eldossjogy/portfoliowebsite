@@ -21,7 +21,7 @@ A dynamic content portfolio website. Developed using Mongodb, NextJS, ReactJs an
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Vercel](https://vercel.com/) - Deployment Platform
 
-##  Screenshots 
+##  Admin Page Screenshot 
 <img width=ful src="./img/admin_page.png" alt="Admin Page"></a>
 
 ## Getting Started
