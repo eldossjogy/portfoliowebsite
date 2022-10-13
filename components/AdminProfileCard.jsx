@@ -1,36 +1,21 @@
 import { Button, Stack, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SendIcon from '@mui/icons-material/Send';
-import toast, { Toaster } from 'react-hot-toast';
 import style from "../styles/Admin.module.css"
-import { useRouter } from "next/router"
+import {updateInfo} from "../utils/profileRequest"
+
 export default function AdminInfoCard(props) {
-    const router = useRouter()
-    const [name, setName] = useState(props.name);
-    const [status, setStatus] = useState(props.status);
-    const [link, setLink] = useState(props.pfp);
-
-    function handleErrors(res) {
-        if (!res.ok) { return res.text().then(text => { throw new Error(text) }) }
-        else { return res.json(); }
-    }
-
-    function updateInfo() {
-        let reqBody = {
-            "id": props.id,
-            "name": name,
-            "status": status,
-            "pfp": link
-        }
-        fetch("https://eldossjogy.vercel.app/api/profile/update", {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(reqBody)
-        }).then(handleErrors)
-            .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
-            .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
-        router.push('/admin/edit');
-    }
+    const [id, setID] = useState();
+    const [name, setName] = useState();
+    const [status, setStatus] = useState();
+    const [link, setLink] = useState();
+    
+    useEffect(() => {
+        setID(props.id)
+        setName(props.name)
+        setStatus(props.status)
+        setLink(props.pfp)
+    }, [props])
 
     return <div className={style.profile}>
         <TextField sx={{ marginBottom: "20px", width: "100%" }}
@@ -60,7 +45,7 @@ export default function AdminInfoCard(props) {
         />
         <Stack direction="row" spacing={2}>
             <Button sx={{ marginLeft: "auto" }}
-                onClick={updateInfo}
+                onClick={() => {updateInfo(id,name,status,link)}}
                 variant="contained"
                 color="success"
                 endIcon={<SendIcon />}>

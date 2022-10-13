@@ -1,5 +1,5 @@
-import { Button, Grid, Typography } from "@mui/material";
-import React from "react";
+import { Grid, Typography } from "@mui/material";
+import React, { useState } from "react";
 import AddButton from "../../components/AddButton";
 import AdminInfoCard from "../../components/AdminInfoCard";
 import AdminProjectCard from "../../components/AdminProjectCard"
@@ -10,18 +10,32 @@ import { useEffect } from "react";
 import { Toaster } from 'react-hot-toast';
 import Profile from "../../components/AdminProfileCard"
 import Footer from "../../components/Footer";
+import { useAppContext } from '../../context/adminContext';
 
 export default function Page(props) {
-    const homeInfos = props.homeInfo.info
-    const projectInfos = props.projectInfo.project
+    const fetchInfo = useAppContext()
     const router = useRouter()
-    const { data: session, status } = useSession()
+    const { status } = useSession()
+
+    const [profileInfo, setProfileInfo] = useState([])
+    const [bioInfo, setBioInfo] = useState([])
+    const [projectInfo, setProjectInfo] = useState([])
+
+    useEffect(() => {
+        if (fetchInfo.profile.info?.length > 0 && fetchInfo.profile.info[0]?._id) {
+            setProfileInfo(fetchInfo.profile.info[0])
+        }
+        setBioInfo(fetchInfo.info.info)
+        setProjectInfo(fetchInfo.project.project)
+    }, [fetchInfo])
+
 
     useEffect(() => {
         if (status === "unauthenticated") {
             router.push({ pathname: "/admin" })
         }
     });
+
     if (status === "loading") {
         return <p>Loading...</p>
     }
@@ -47,27 +61,27 @@ export default function Page(props) {
                         <Typography variant="h5">
                             Profile Info
                         </Typography>
-                        <Profile key={props.profileInfo.info[0]._id} id={props.profileInfo.info[0]._id} name={props.profileInfo.info[0].name} status={props.profileInfo.info[0].status} pfp={props.profileInfo.info[0].pfp} />
+                        <Profile key={profileInfo?._id} id={profileInfo?._id} name={profileInfo?.name} status={profileInfo?.status} pfp={profileInfo?.pfp} setInfo={setProfileInfo} />
                         <Typography variant="h5">
                             Homepage Info
-                            <AddButton id="info"></AddButton>
+                            <AddButton id="info" setFun={setBioInfo}></AddButton>
                         </Typography>
                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 8, md: 6, tablet: 6, lg: 8, xl: 12 }}>
-                            {homeInfos.map((info) => {
-                                return <Grid item xs={2} sm={4} md={3} key={info._id}> <AdminInfoCard key={info._id} id={info._id} title={info.title} content={info.content} /> </Grid>
+                            {bioInfo?.map((info) => {
+                                return <Grid item xs={2} sm={4} md={3} key={info._id}> <AdminInfoCard key={info._id} id={info._id} title={info.title} content={info.content} setInfo={setBioInfo} /> </Grid>
                             })}
                         </Grid>
                         <Typography variant="h5" sx={{ marginTop: "5%" }}>
                             Project Info
-                            <AddButton id="project"></AddButton>
+                            <AddButton id="project" setFun={setProjectInfo}></AddButton>
                         </Typography>
                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 1, sm: 8, md: 6, tablet: 6, lg: 8, xl: 12 }}>
-                            {projectInfos.map((info) => {
-                                return <Grid item xs={2} sm={4} md={3} key={info._id}> <AdminProjectCard key={info._id} id={info._id} title={info.title} content={info.content} img={info.img} link={info.link} ext={info.extlink} /> </Grid>
+                            {projectInfo?.map((info) => {
+                                return <Grid item xs={2} sm={4} md={3} key={info._id}> <AdminProjectCard key={info._id} id={info._id} title={info.title} content={info.content} img={info.img} link={info.link} ext={info.extlink} setInfo={setProjectInfo} /> </Grid>
                             })}
                         </Grid>
                     </Grid>
-                    <Grid className="disapear" item xs={false} md={2}>
+                    <Grid item xs={false} md={2}>
                     </Grid>
                 </Grid>
                 <Toaster />
@@ -77,18 +91,3 @@ export default function Page(props) {
     }
 }
 
-export const getServerSideProps = async () => {
-    var res = await fetch("https://eldossjogy.vercel.app/api/info/get")
-    const homeInfo = await res.json()
-    res = await fetch("https://eldossjogy.vercel.app/api/project/get")
-    const projectInfo = await res.json()
-    res = await fetch("https://eldossjogy.vercel.app/api/profile/get")
-    const profileInfo = await res.json()
-    return {
-        props: {
-            homeInfo,
-            projectInfo,
-            profileInfo
-        },
-    }
-}

@@ -3,6 +3,8 @@ import { CssBaseline } from '@mui/material'
 import PageProvider from "../src/PageProvider"
 import { ThemeProvider } from 'next-themes'
 import { SessionProvider } from "next-auth/react"
+import { AppWrapper  } from '../context/adminContext';
+
 import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
@@ -21,7 +23,9 @@ function MyApp({ Component, pageProps }) {
             <meta property="og:url" content="https://eldossjogy.vercel.app/" />
             <meta property="og:image" content="https://avatars.githubusercontent.com/u/77898541?v=4" />
           </Head>
-          <Component {...pageProps} />
+          <AppWrapper >
+            <Component {...pageProps} />
+          </AppWrapper >
         </PageProvider>
       </ThemeProvider>
     </SessionProvider>

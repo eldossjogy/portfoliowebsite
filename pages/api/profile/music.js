@@ -20,6 +20,26 @@ export default async function musicInfo(req, res) {
         return result
     }
 
+    function decodeHTMLEntities(text) {
+        var entities = [
+            ['amp', '&'],
+            ['apos', '\''],
+            ['#x27', '\''],
+            ['#x2F', '/'],
+            ['#39', '\''],
+            ['#47', '/'],
+            ['lt', '<'],
+            ['gt', '>'],
+            ['nbsp', ' '],
+            ['quot', '"']
+        ];
+    
+        for (var i = 0, max = entities.length; i < max; ++i) 
+            text = text.replace(new RegExp('&'+entities[i][0]+';', 'g'), entities[i][1]);
+    
+        return text;
+    }
+
     async function fetchMusic() {
         let Music = {}
         const response = await fetch('https://www.last.fm/user/Betamxnster');
@@ -30,8 +50,8 @@ export default async function musicInfo(req, res) {
         data = data.substring(chartListpos, data.length);
         let track = CurrentListening(data, "title", "class")
         let artist = CurrentListeningArtist(data, "title", "</a>")
-        track = track.replace("&#39;", "'").replace("&amp;", "&").replace("&#34;", `"`).replace("&#34;", `"`)
-        artist = artist.replace("&#39;", "'").replace("&amp;", "&").replace("&#34;", `"`).replace("&#34;", `"`)
+        track = decodeHTMLEntities(track)
+        artist = decodeHTMLEntities(artist)
         Music.track = decodeURI(track);
         Music.artist = decodeURI(artist);
         return Music

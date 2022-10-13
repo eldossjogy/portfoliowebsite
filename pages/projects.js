@@ -12,10 +12,10 @@ export default function ProjectList(props) {
             <Grid item xs={false} md={3}>
             </Grid>
             <Grid className="container" item xs={12} md={true}>
-                <Projects proj={props.projects.project} />
+                <Projects proj={props.projects} />
                 <Footer></Footer>
             </Grid>
-            <Grid className="disapear" item xs={false} md={3}>
+            <Grid item xs={false} md={3}>
             </Grid>
         </Grid>
 
@@ -26,7 +26,7 @@ export async function getStaticProps(){
     const req = await fetch("https://eldossjogy.vercel.app/api/project/get")
     const data = await req.json()
     return{
-        props: {projects: data},
+        props: {projects: data.project.reverse()},
         revalidate: 10,
     }
 }

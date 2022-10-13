@@ -1,5 +1,5 @@
 body {
-    background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+    background-image: url(https://www.transparenttextures.com/patterns/cartographer.png);
 }
 
 footer {
@@ -82,4 +82,20 @@ mark {
     .gridSpace {
         display: none;
     }
+}
+
+.links {
+    all: unset;
+}
+
+.myCard {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    border-radius: 10px !important;
+    min-height: 100%;
+}
+
+.bottomCard {
+    align-self: flex-end;
 }

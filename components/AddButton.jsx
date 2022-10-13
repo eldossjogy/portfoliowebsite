@@ -6,11 +6,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useRouter } from "next/router";
 import toast from 'react-hot-toast';
+import { addProject } from "../utils/projectRequest"
+import { addInfo } from "../utils/infoRequest"
 
 export default function AddButton(props) {
-    const router = useRouter()
     const [infoOpen, setInfoOpen] = useState(false);
     const [projOpen, setProjOpen] = useState(false);
     const [infoTitle, setInfoTitle] = useState("");
@@ -24,6 +24,16 @@ export default function AddButton(props) {
     function openDialog() {
         if (props.id === 'info') { setInfoOpen(true); }
         else { setProjOpen(true); }
+    }
+
+    function reset(){
+        setInfoTitle("");
+        setInfoContent("");
+        setProjTitle("");
+        setProjContent("");
+        setProjImgLink("");
+        setProjSrcLink("");
+        setProjExtLink("");
     }
 
     function handleDialogClose(event) {
@@ -42,52 +52,39 @@ export default function AddButton(props) {
         }
     };
 
-    function handleErrors(res) {
-        if (!res.ok) { return res.text().then(text => { throw new Error(text) }) }
-        else { return res.json(); }
-    }
-
     function handleDialogSubmit(e) {
-        let reqBody = {}
         if (e.target.id === 'info') {
-            reqBody = {
-                "title": infoTitle,
-                "content": infoContent
+            if (!infoTitle && !infoContent) {
+                toast("Empty Form", { type: "error", duration: 2000 })
             }
-            fetch("https://eldossjogy.vercel.app/api/info/add", {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(reqBody)
-            }).then(handleErrors)
-                .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
-                .catch(err => { toast("Error", { type: "error", duration: 2000 }) });
-            setInfoOpen(false);
+            else if (!infoTitle) {
+                toast("Missing Title Section", { type: "error", duration: 2000 })
+            }
+            else if (!infoContent) {
+                toast("Missing Content Section", { type: "error", duration: 2000 })
+            }
+            else {
+                addInfo(infoTitle, infoContent, props.setFun,setInfoOpen,reset)
+            }
         } else {
-            reqBody = {
-                "title": projTitle,
-                "content": projContent,
-                "img": projImgLink,
-                "link": projSrcLink,
-                "extlink" : projExtLink
+            if (!projTitle && !projContent && !projImgLink && !projSrcLink && !projExtLink) {
+                toast("Empty Form", { type: "error", duration: 2000 })
             }
-            fetch("https://eldossjogy.vercel.app/api/project/add", {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(reqBody)
-            }).then(handleErrors)
-                .then(Response => toast("Success", { type: "sucess", duration: 2000 }))
-                .catch(err => { toast("Error " + JSON.parse(err.message).message, { type: "error", duration: 2000 }) });
-            setProjOpen(false);
+            else if (!projTitle) {
+                toast("Missing Title Section", { type: "error", duration: 2000 })
+            }
+            else if (!projContent) {
+                toast("Missing Content Section", { type: "error", duration: 2000 })
+            }
+            else if (!projImgLink) {
+                toast("Missing Image Section", { type: "error", duration: 2000 })
+            }
+            else {
+                addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLink, props.setFun,setProjOpen,reset)
+            }
         }
-        setInfoTitle("");
-        setInfoContent("");
-        setProjTitle("");
-        setProjContent("");
-        setProjImgLink("");
-        setProjSrcLink("");
-        setProjExtLink("");
-        router.push("/admin/edit")
-    }
+    }        
+   
 
     return <div sx={{ display: "inline" }}>
         <Button onClick={openDialog} className="btn-add" variant="contained" color="secondary" startIcon={<AddIcon sx={{ marginLeft: "25%" }} />}>
@@ -176,7 +173,7 @@ export default function AddButton(props) {
                     value={projSrcLink}
                     onChange={(e) => setProjSrcLink(e.target.value)}
                 />
-                  <TextField
+                <TextField
                     autoFocus
                     margin="dense"
                     id="name"
@@ -193,6 +190,5 @@ export default function AddButton(props) {
                 <Button onClick={handleDialogSubmit} id="proj">Add</Button>
             </DialogActions>
         </Dialog>
-        {/* <Toaster /> */}
     </div>
 }

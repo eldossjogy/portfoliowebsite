@@ -5,7 +5,7 @@ import { Grid } from "@mui/material";
 
 export default function Projects(props) {
     return <div>
-        <Typography variant="h3" sx={{ textAlign: "center", marginBottom: "30px" }}>
+        <Typography variant="h3" sx={{ textAlign: "center", marginBottom: "15px" }}>
             Projects
         </Typography>
         <Grid container spacing={{ xs: 2, md: 2 }}>
