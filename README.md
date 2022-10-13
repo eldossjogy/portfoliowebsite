@@ -5,15 +5,15 @@
 
 <h3 align="center">Portfolio Website</h3>
  
-## 🧐 About <a name = "about"></a>
+## About 
 
-Write about 1-2 paragraphs describing the purpose of your project.
+A dynamic content portfolio website. Developed using Mongodb, NextJS, ReactJs and Material UI for a simple and powerful interface. Mobile responsive using media queries and the Material UI library's responsive features. Includes an admin page with the ability to change content on the page, using internal API to update data on the database.
 
-## 🚀 Deployment <a name = "deployment"></a>
+##  Deployment
 🔗 [Visit Website](https://eldossjogy.vercel.app/)
 
 
-## ⛏️ Built Using <a name = "built_using"></a>
+##  Built Using 
 
 - [ReactJs](https://reactjs.org/) - Web Framework
 - [NextJs](https://nextjs.org/) - Server Framework
@@ -21,9 +21,12 @@ Write about 1-2 paragraphs describing the purpose of your project.
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Vercel](https://vercel.com/) - Deployment Platform
 
- 
-## Prerequisites & Installing
+##  Screenshots 
+<img width=ful src="./img/admin_page.png" alt="Admin Page"></a>
 
+## Getting Started
+
+### Prerequisites
 Create a file in the root directory with the name `.env.local` containing the filled information of the `.env.example` file.
  
 Install packages:
