@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid';
 import Navbar from "../components/Navbar"
 import Contacts from "../components/Contact"
 export default function Contact() {
-  const [time, setTime] = useState(Date.now());
   const [Music, setMusic] = useState({"track": "loading...", "artist" :""})
 
   function updateMusic() {
@@ -33,6 +32,5 @@ export default function Contact() {
       <Grid item xs={false} md={4}>
       </Grid>
     </Grid>
-
   </Box>
 }

@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 export default function SignIn() {
   const router = useRouter()
   return <Box sx={{ flexGrow: 1, mt: 1 }}>
-
     <Grid container spacing={1}>
       <Grid item xs={1} sm={1} md={3} lg={3.4} xl={4.4}>
       </Grid>
@@ -25,5 +24,4 @@ export default function SignIn() {
       </Grid>
     </Grid>
   </Box >
-  //}
 }
