@@ -20,24 +20,20 @@ export default function ProjectList(props) {
             <meta property="og:image" content={imgURL} /> */}
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width"/>
-            <meta name="description" content="Im Danial Ahmed and this is my personal  website"/>
+            <meta name="description" content="Im Eldoss Jogy and this is my personal  website"/>
             <meta name="twitter:image:src" content={imgURL}/>
-            <meta name="twitter:image:src" content={imgURL}/>
-            <meta name="twitter:site" content="@unofficialdxnny"/>
             <meta name="twitter:card" content="summary_large_image"/>
-            <meta name="twitter:title" content="unofficialdxnny (Danial Ahmed)"/>
-            <meta name="twitter:description" content="Im Danial Ahmed and this is my personal website"/>
             <meta property="og:image" content={imgURL}/>
-            <meta property="og:image:alt" content="Im Danial Ahmed and this is my personal website"/>
+            <meta property="og:image:alt" content="Im Eldoss Jogy and this is my personal website"/>
             <meta property="og:image:width" content="1200"/>
             <meta property="og:image:height" content="600"/>
-            <meta property="og:site_name" content="unofficialdxnny"/>
+            <meta property="og:site_name" content="eldossjogy"/>
             <meta property="og:type" content="object"/>
-            <meta property="og:title" content="unofficialdxnny (Danial Ahmed) Website"/>
-            <meta property="og:url" content="https://unofficialdxnny.netlify.app"/>
-            <meta property="og:description" content="Im Danial Ahmed and this is my personal website"/>
-            <meta name="expected-hostname" content="https://unofficialdxnny.netlify.app/"/>
-            <meta name="theme-color" content="#1167ab"/>
+            <meta property="og:title" content="Eldoss Website"/>
+            {/* <meta property="og:url" content="https://unofficialdxnny.netlify.app"/> */}
+            <meta property="og:description" content="Im Eldoss Jogy and this is my personal website"/>
+            {/* <meta name="expected-hostname" content="https://unofficialdxnny.netlify.app/"/> */}
+            <meta name="theme-color" content="#2b2d42" />
         </Head>
 
         <Box sx={{ flexGrow: 1, mt: 1 }}>
