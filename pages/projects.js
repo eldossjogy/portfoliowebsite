@@ -7,8 +7,7 @@ import Projects from "../components/Projects"
 import Head from "next/head";
 
 export default function ProjectList(props) {
-    let title = ""
-    const imgURL = `/api/og?title=${title}`
+    const imgURL = `/api/og?title=projects`
     return <div>
         <Head>
             <meta charset="utf-8"/>
