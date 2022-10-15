@@ -8,7 +8,7 @@ import Head from "next/head";
 
 export default function ProjectList(props) {
     let title = "project"
-    const imgURL = `http://localhost:3000/api/og?title=${title}`
+    const imgURL = `/api/og?title=${title}`
     return <div>
         <Head>
             <title>Project</title>
