@@ -110,10 +110,10 @@ export default function handler(req) {
                     display: 'flex',
                     color: 'white'
                 }}>
-                    {/* <img src=" https://raw.githubusercontent.com/eldossjogy/spotify2deezer/main/logo.png" alt="pfp" width="50" height="50" style={{
+                    <img src="https://i.imgur.com/94H71dj.png" alt="pfp" width="50" height="50" style={{
                         marginLeft: '20px',
                         marginRight: '20px',
-                    }} /> */}
+                    }} />
                     <h2>eldossjogy.vercel.app</h2>
                 </div>
 
