@@ -69,7 +69,16 @@ export const config = {
 export default function handler(req) {
     const { searchParams } = new URL(req.url)
     const title = searchParams.get('title') ?? "Default Title"
-    let description = "THIS IS A TEST"
+    let description = "Default Description"
+
+    switch (title) {
+        case 'project':
+            description = 'A list of projects 😁👍'
+            break;
+    
+        default:
+            break;
+    }
     return new ImageResponse(
         (
             <div
@@ -93,12 +102,12 @@ export default function handler(req) {
                         flexDirection: 'column'
                     }}>
                         <h1 style={{ fontSize: '80px' }}>eldossjogy/</h1>
-                        <h1 style={{ fontSize: '80px' }}>title</h1>
+                        <h1 style={{ fontSize: '80px' }}>{title}</h1>
                     </div>
                 </div>
 
                 <div style={{ display: 'flex', height: '50%', color: 'gray', marginLeft: '30px', marginTop: '40px', fontSize: '80px' }}>
-                    description
+                    {description}
                 </div>
                 <div style={{
                     alignContent: 'flex-end',
@@ -120,8 +129,8 @@ export default function handler(req) {
             </div>
         ),
         {
-            width: 1000,
-            height: 460,
+            width: 1200,
+            height: 800,
         },
     );
 }

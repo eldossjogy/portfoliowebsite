@@ -7,18 +7,16 @@ import Projects from "../components/Projects"
 import Head from "next/head";
 
 export default function ProjectList(props) {
-    let title = "project"
+    let title = ""
     const imgURL = `/api/og?title=${title}`
     return <div>
         <Head>
+            <meta charset="utf-8"/>
             <title>Project</title>
             <link rel="icon" type="image/x-png" href="./icon.png"></link>
-            {/* <meta name="viewport" content="initial-scale=1.0, width=device-width" />
             <meta property="og:title" content="Hi, I'm Eldoss Jogy." />
             <meta property="og:description" content="Eldoss Jogy's Portfolio Website" />
             <meta property="og:url" content="https://eldossjogy.vercel.app/" />
-            <meta property="og:image" content={imgURL} /> */}
-            <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width"/>
             <meta name="description" content="Im Eldoss Jogy and this is my personal  website"/>
             <meta name="twitter:image:src" content={imgURL}/>
@@ -29,10 +27,6 @@ export default function ProjectList(props) {
             <meta property="og:image:height" content="600"/>
             <meta property="og:site_name" content="eldossjogy"/>
             <meta property="og:type" content="object"/>
-            <meta property="og:title" content="Eldoss Website"/>
-            {/* <meta property="og:url" content="https://unofficialdxnny.netlify.app"/> */}
-            <meta property="og:description" content="Im Eldoss Jogy and this is my personal website"/>
-            {/* <meta name="expected-hostname" content="https://unofficialdxnny.netlify.app/"/> */}
             <meta name="theme-color" content="#2b2d42" />
         </Head>
 
