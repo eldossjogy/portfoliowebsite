@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 
-export default function Head({title,description}) {
+export default function newHead({title,description}) {
     const imgURL = `/api/og?title=${title}&description=${description}`
     return (
         <Head>

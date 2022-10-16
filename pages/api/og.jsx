@@ -1,5 +1,5 @@
 import { ImageResponse } from '@vercel/og';
-
+import Image from 'next/image';
 export const config = {
     runtime: 'experimental-edge',
 };
@@ -20,7 +20,7 @@ export default function handler(req) {
                 }}
             >
                 <div style={{ display: 'flex', height: '40%', alignItems: 'center', paddingTop: '30px' }}>
-                    <img src="https://avatars.githubusercontent.com/u/77898541?s=400&u=30cc411c43ed339f9136b0e6b59206aef5822fb0&v=4" alt="pfp" width="250" height="250" style={{
+                    <Image src="https://avatars.githubusercontent.com/u/77898541?s=400&u=30cc411c43ed339f9136b0e6b59206aef5822fb0&v=4" alt="pfp" width="250" height="250" style={{
                         marginLeft: 20,
                         borderRadius: '50px',
                     }} />
@@ -48,7 +48,7 @@ export default function handler(req) {
                     display: 'flex',
                     color: 'white'
                 }}>
-                    <img src="https://i.imgur.com/94H71dj.png" alt="pfp" width="50" height="50" style={{
+                    <Image src="https://i.imgur.com/94H71dj.png" alt="pfp" width="50" height="50" style={{
                         marginLeft: '20px',
                         marginRight: '20px',
                     }} />
