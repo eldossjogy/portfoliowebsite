@@ -5,8 +5,6 @@ import { ThemeProvider } from 'next-themes'
 import { SessionProvider } from "next-auth/react"
 import { AppWrapper  } from '../context/adminContext';
 
-import Head from 'next/head'
-
 function MyApp({ Component, pageProps }) {
   return (
 
@@ -14,10 +12,6 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider>
         <PageProvider>
           <CssBaseline />
-          <Head>
-            <title>Eldoss Jogy</title>
-            <link rel="icon" type="image/x-png" href="./icon.png"></link>
-          </Head>
           <AppWrapper >
             <Component {...pageProps} />
           </AppWrapper >
