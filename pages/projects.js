@@ -8,7 +8,7 @@ import Head from "../components/Head"
 
 export default function ProjectList(props) {
     return <div>
-        <Head title='projects' description='A list of personal projects demonstrating my technical skills. '/>
+        <Head title='projects' description='A list of personal projects demonstrating my skills. '/>
         <Box sx={{ flexGrow: 1, mt: 1 }}>
 
             <Navbar page='projects'></Navbar>
