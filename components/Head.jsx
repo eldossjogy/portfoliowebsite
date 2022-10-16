@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 
 export default function newHead({title,description}) {
-    const imgURL = `/api/og?title=${title}&description=${description}`
+    const imgURL = `/api/og?title=${title}&context=${description}`
     return (
         <Head>
             <meta charset="utf-8" />
