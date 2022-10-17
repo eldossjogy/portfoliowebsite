@@ -5,7 +5,7 @@ export default function newHead({title,description}) {
     const imgURL = `/api/og?title=${title}&context=${description}`
     return (
         <Head>
-            <meta charset="utf-8" />
+            <meta charSet="utf-8" />
             <title>Eldoss Jogy</title>
             <link rel="icon" type="image/x-png" href="./icon.png"></link>
             <meta property="og:title" content="Eldoss Jogy's Portfolio Website" />

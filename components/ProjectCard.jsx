@@ -16,18 +16,24 @@ export default function MediaCard(props) {
                 image={props.img}
                 alt="project image"
             />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div" fontWeight={"bold"}>{props.title}
+
+            <CardContent className='cardBody'>
+                <Typography className="cardContent" variant="h5" component="div" fontWeight={"bold"}>{props.title}
                 </Typography>
                 <Typography variant="body1">{parse(props.content)}
                 </Typography>
             </CardContent>
-            <CardActions className={"bottomCard"}>
+            <CardActions className='linkCards'>
                 <a className={"links"} href={props.link} target="_blank" rel="noopener noreferrer">
-                <Icon className={"socialMedia"} icon="akar-icons:github-fill" width="35" height="35" cursor="pointer" />
+                    <Icon className={"socialMedia"} icon="akar-icons:github-fill" width="35" height="35" cursor="pointer" />
                 </a>
-                {props.extlink != "" ?  <a href={props.extlink} className={"links"} target="_blank" rel="noopener noreferrer"><Icon className={"socialMedia"} icon="fa-solid:globe" width="35" height="35" cursor="pointer" /></a> : null }
+                {props.extlink != "" ?
+                    <a href={props.extlink} className={"links"} target="_blank" rel="noopener noreferrer">
+                        <Icon className={"socialMedia"} icon="fa-solid:globe" width="35" height="35" cursor="pointer" />
+                    </a>
+                    : null}
             </CardActions>
+
         </Card>
     );
 }

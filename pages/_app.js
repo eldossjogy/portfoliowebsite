@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
           <CssBaseline />
           <AppWrapper >
             <Head>
-              <meta charset="utf-8" />
+              <meta charSet="utf-8" />
               <title>Eldoss Jogy</title>
               <link rel="icon" type="image/x-png" href="./icon.png"></link>
             </Head>
