@@ -54,7 +54,7 @@ function addProject(projTitle, projContent, projImgLink, projSrcLink, projExtLin
         .then(r => {
             reset()
             toast("Success", { type: "success", duration: 2000 })
-            setProject(prevArray => {[...prevArray, r.project]})
+            setProject(prevArray => [...prevArray, r.project])
         })
         .catch(err => {
             try {
