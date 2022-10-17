@@ -1,0 +1,17 @@
+.cantSee {
+    display: none;
+}
+
+.canSee {
+    display: block;
+}
+
+.btn {
+    margin: 0%;
+}
+
+.navbar {
+    border-radius: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}

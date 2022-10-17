@@ -1,0 +1,105 @@
+body {
+    background-image: url(https://www.transparenttextures.com/patterns/cartographer.png);
+}
+
+footer {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.socialMedia {
+    margin: 0 15px 0 15px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 1.62rem;
+}
+
+.contactInfo {
+    text-align: center;
+}
+
+.socialTray {
+    margin-top: 2%;
+}
+
+.socialMedia:hover {
+    transform: scale(1.2);
+}
+
+.name {
+    text-decoration: none;
+}
+
+.btn-add {
+    margin-left: 20px;
+}
+
+.homeHeading {
+    margin-bottom: 0px;
+}
+
+.homeContent {
+    margin-top: 4px;
+    line-height: 1.6;
+}
+
+.darkCard {
+    background-color: #212121;
+}
+
+.lightCard {
+    background-color: #e0e0e0;
+}
+
+mark {
+    background-color: rgb(193, 193, 193, 0.4);
+}
+
+.cantSee {
+    display: none;
+}
+
+.yourName {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.homeName {
+    margin-top: 1.2rem;
+}
+
+.gridSpace {
+    display: block;
+}
+
+@media only screen and (min-width: 900px) {
+    .gridSpace {
+        display: none;
+    }
+}
+
+.links {
+    all: unset;
+}
+
+.myCard {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    border-radius: 10px !important;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.cardContent {
+    margin-bottom: 10px !important;
+}
+.cardBody {
+    flex: auto
+}
