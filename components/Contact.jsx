@@ -32,7 +32,7 @@ function Contact(props) {
                 <a className={"links"} href="https://open.spotify.com/user/unknowkid123" target="_blank" rel="noopener noreferrer">
                     <Icon className={"socialMedia"} icon="mdi:spotify" width="35" height="35" cursor="pointer" />
                 </a>
-                <a className={"links"} href="https://www.last.fm/user/Betamxnster" target="_blank" rel="noopener noreferrer">
+                <a className={"links"} href="https://www.last.fm/user/eldossjogy" target="_blank" rel="noopener noreferrer">
 
                     <Icon className={"socialMedia"} icon="brandico:lastfm" width="35" height="35" cursor="pointer" />
                 </a>

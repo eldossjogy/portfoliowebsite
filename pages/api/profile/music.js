@@ -42,7 +42,7 @@ export default async function musicInfo(req, res) {
 
     async function fetchMusic() {
         let Music = {}
-        const response = await fetch('https://www.last.fm/user/Betamxnster');
+        const response = await fetch('https://www.last.fm/user/eldossjogy');
         var data = await response.text();
         var chartListpos = data.search("chartlist-row--now-scrobbling")
         data = data.substring(chartListpos, data.length);
